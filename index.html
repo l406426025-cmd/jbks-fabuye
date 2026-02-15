@@ -32,28 +32,52 @@
             border: 1px solid #f3e5f5;
         }
 
-        /* 标题区域统一设计，层级分明 */
+        /* 新增：头像+标题组合容器，居中对齐 */
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        /* 圆形头像样式 */
+        .avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%; /* 圆形 */
+            margin-right: 15px; /* 和标题的间距 */
+            border: 2px solid #f3e5f5; /* 淡紫边框，和整体呼应 */
+            object-fit: cover; /* 头像不拉伸 */
+        }
+
+        /* 标题文字容器，左对齐 */
+        .title-group {
+            text-align: left;
+        }
+
+        /* 标题层级优化 */
         .title-1 {
-            font-size: 24px; /* 主标题最大，突出核心 */
-            color: #6a1b9a; /* 主紫色，醒目但不刺眼 */
+            font-size: 24px;
+            color: #6a1b9a;
             font-weight: 700;
-            margin-bottom: 6px; /* 紧凑但不拥挤 */
+            line-height: 1.2;
+            margin-bottom: 3px;
         }
 
         .title-2 {
-            font-size: 18px; /* 副标题次之，作为补充 */
-            color: #8e24aa; /* 稍浅的紫色，和主标题呼应 */
+            font-size: 18px;
+            color: #8e24aa;
             font-weight: 500;
-            margin-bottom: 18px; /* 拉开和说明文字的距离 */
-            letter-spacing: 0.5px; /* 轻微字间距，更易读 */
+            line-height: 1.2;
+            margin-bottom: 0;
         }
 
         .title-3 {
-            font-size: 14px; /* 说明文字最小，作为点缀 */
-            color: #ab47bc; /* 更浅的紫色，不抢风头 */
+            font-size: 14px;
+            color: #ab47bc;
             font-weight: 400;
-            margin-bottom: 35px; /* 足够间距，区分按钮区域 */
-            opacity: 0.9; /* 轻微透明，降低视觉权重 */
+            margin-bottom: 30px;
+            opacity: 0.9;
         }
 
         .link-list {
@@ -87,13 +111,34 @@
             font-size: 12px;
             color: #95a5a6;
         }
+
+        /* 适配手机：小屏时头像缩小，间距调整 */
+        @media (max-width: 400px) {
+            .avatar {
+                width: 50px;
+                height: 50px;
+            }
+            .title-1 {
+                font-size: 20px;
+            }
+            .title-2 {
+                font-size: 16px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="card">
-        <!-- 标题层级清晰，排版规整 -->
-        <h1 class="title-1">小姬资源发布页</h1>
-        <h2 class="title-2">收藏永不失联</h2>
+        <!-- 头像+标题组合 -->
+        <div class="header-container">
+            <!-- 替换成你的头像链接，建议用正方形图片 -->
+            <img src="https://picsum.photos/200/200" alt="小姬头像" class="avatar">
+            <div class="title-group">
+                <h1 class="title-1">小姬资源发布页</h1>
+                <h2 class="title-2">收藏永不失联</h2>
+            </div>
+        </div>
+        
         <p class="title-3">资源聚合·魔法分享·持续更新</p>
         
         <div class="link-list">
