@@ -5,16 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>小姬资源发布页</title>
     <style>
-        /* 全局重置与基础样式 */
+        /* 全局样式 - 顺滑滚动+统一字体 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            font-family: "Inter", "PingFang SC", "Microsoft YaHei", sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
-            background: linear-gradient(120deg, #f9f4fc 0%, #ffffff 100%);
+            background: #f5f5f7;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -22,162 +23,177 @@
             padding: 20px;
         }
 
-        /* 主卡片容器 - 核心视觉区 */
-        .card {
-            background: #ffffff;
+        /* 主容器 - 玻璃质感+圆角阴影 */
+        .container {
             width: 100%;
-            max-width: 550px;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(156, 39, 176, 0.05);
-            padding: 45px 35px;
-            position: relative;
-            overflow: hidden;
+            max-width: 580px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            box-shadow: 0 12px 40px rgba(149, 157, 165, 0.1);
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.9);
         }
 
-        /* 顶部装饰条 - 增加精致感 */
-        .card::before {
+        /* 头部区域 - 头像+标题居中 */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        /* 头像 - 渐变边框+悬浮阴影 */
+        .avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            object-fit: cover;
+            border: 4px solid transparent;
+            background: linear-gradient(#fff, #fff) padding-box,
+                        linear-gradient(135deg, #bb86fc, #9c27b0) border-box;
+            box-shadow: 0 8px 20px rgba(156, 39, 176, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .avatar:hover {
+            transform: scale(1.05);
+        }
+
+        /* 标题组合 - 渐变文字+层级间距 */
+        .main-title {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6a1b9a, #9c27b0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+            letter-spacing: 0.8px;
+        }
+
+        .sub-title {
+            font-size: 17px;
+            color: #7b1fa2;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .desc {
+            font-size: 14px;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        /* 链接列表 - 间距+卡片样式 */
+        .link-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-bottom: 40px;
+        }
+
+        /* 链接卡片 - 渐变背景+hover动效 */
+        .link-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .link-card::before {
             content: "";
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #9c27b0, #ba68c8);
+            height: 100%;
+            background: linear-gradient(135deg, rgba(156, 39, 176, 0.03), rgba(187, 134, 252, 0.05));
+            z-index: 1;
         }
 
-        /* 头像+标题区域 - 居中对称设计 */
-        .header {
-            text-align: center;
-            margin-bottom: 35px;
-        }
-
-        /* 圆形头像 - 更精致的样式 */
-        .avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin: 0 auto 18px;
-            border: 3px solid #f3e5f5;
-            box-shadow: 0 4px 12px rgba(156, 39, 176, 0.1);
-            object-fit: cover;
-        }
-
-        /* 标题层级 - 更舒适的字号和间距 */
-        .main-title {
-            font-size: 26px;
-            color: #333333;
-            font-weight: 600;
-            margin-bottom: 6px;
-            letter-spacing: 0.5px;
-        }
-
-        .sub-title {
-            font-size: 16px;
-            color: #9c27b0;
-            font-weight: 500;
-            margin-bottom: 8px;
-        }
-
-        .desc-text {
-            font-size: 13px;
-            color: #999999;
-            font-weight: 400;
-            line-height: 1.5;
-        }
-
-        /* 链接列表 - 更现代的按钮样式 */
-        .link-list {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            margin-bottom: 35px;
-        }
-
-        .link-item {
+        .link-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 18px 20px;
-            background: #ffffff;
-            color: #6a1b9a;
-            text-decoration: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 500;
-            border: 1px solid #e1bee7;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* 按钮hover动效 - 更高级的交互 */
-        .link-item::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
+            padding: 20px;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(156, 39, 176, 0.05), transparent);
-            transition: left 0.6s ease;
+            text-decoration: none;
+            color: #6a1b9a;
+            font-size: 17px;
+            font-weight: 600;
+            background: #fff;
+            border: 1px solid rgba(156, 39, 176, 0.1);
+            border-radius: 16px;
+            position: relative;
+            z-index: 2;
         }
 
-        .link-item:hover {
-            background: #faf0fc;
-            border-color: #ce93d8;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(156, 39, 176, 0.1);
+        .link-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(156, 39, 176, 0.12);
         }
 
-        .link-item:hover::after {
-            left: 100%;
+        .link-card:hover .link-btn {
+            color: #9c27b0;
+            border-color: rgba(156, 39, 176, 0.2);
         }
 
-        /* 页脚 - 更低调的样式 */
+        /* 页脚 - 简约分割线 */
         .footer {
             text-align: center;
-            font-size: 12px;
-            color: #bbbbbb;
-            padding-top: 15px;
-            border-top: 1px solid #f8f0fa;
+            padding-top: 20px;
+            border-top: 1px solid rgba(156, 39, 176, 0.08);
+            color: #aaa;
+            font-size: 13px;
         }
 
-        /* 手机端适配 - 更贴心的调整 */
-        @media (max-width: 450px) {
-            .card {
-                padding: 35px 25px;
+        /* 手机端适配 - 精准调整 */
+        @media (max-width: 500px) {
+            .container {
+                padding: 30px 25px;
+                border-radius: 20px;
             }
             .avatar {
-                width: 70px;
-                height: 70px;
+                width: 80px;
+                height: 80px;
             }
             .main-title {
-                font-size: 22px;
+                font-size: 24px;
             }
-            .link-item {
-                padding: 16px 18px;
-                font-size: 15px;
+            .link-btn {
+                padding: 18px;
+                font-size: 16px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="card">
-        <!-- 头部区域：头像+标题 -->
+    <div class="container">
+        <!-- 头部：渐变边框头像+渐变文字标题 -->
         <div class="header">
             <img src="https://picsum.photos/200/200" alt="小姬头像" class="avatar">
             <h1 class="main-title">小姬资源发布页</h1>
             <h2 class="sub-title">收藏永不失联</h2>
-            <p class="desc-text">资源聚合 · 魔法分享 · 持续更新</p>
+            <p class="desc">资源聚合 · 魔法分享 · 持续更新</p>
         </div>
 
-        <!-- 链接列表 -->
-        <div class="link-list">
-            <a href="https://link3.cc/jbksle" target="_blank" class="link-item">线路1</a>
-            <a href="https://proxy.edgeone.pp.ua/proxy?url=https%3A%2F%2Fl406426025-cmd.github.io%2F" target="_blank" class="link-item">线路2</a>
-            <a href="https://niurl.cc/9w0Bqj" target="_blank" class="link-item">线路3</a>
-            <a href="https://vlink.cc/jbksle" target="_blank" class="link-item">线路4</a>
-            <a href="https://l406426025-cmd.github.io/" target="_blank" class="link-item">线路5</a>
+        <!-- 链接卡片列表 -->
+        <div class="link-wrapper">
+            <div class="link-card">
+                <a href="https://link3.cc/jbksle" target="_blank" class="link-btn">线路1</a>
+            </div>
+            <div class="link-card">
+                <a href="https://proxy.edgeone.pp.ua/proxy?url=https%3A%2F%2Fl406426025-cmd.github.io%2F" target="_blank" class="link-btn">线路2</a>
+            </div>
+            <div class="link-card">
+                <a href="https://niurl.cc/9w0Bqj" target="_blank" class="link-btn">线路3</a>
+            </div>
+            <div class="link-card">
+                <a href="https://vlink.cc/jbksle" target="_blank" class="link-btn">线路4</a>
+            </div>
+            <div class="link-card">
+                <a href="https://l406426025-cmd.github.io/" target="_blank" class="link-btn">线路5</a>
+            </div>
         </div>
 
         <!-- 页脚 -->
