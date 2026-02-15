@@ -26,32 +26,34 @@
             width: 100%;
             max-width: 500px;
             border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(156, 39, 176, 0.08); /* 淡紫色调阴影 */
+            box-shadow: 0 4px 20px rgba(156, 39, 176, 0.08);
             padding: 40px 30px;
             text-align: center;
-            border: 1px solid #f3e5f5; /* 浅紫边框增强层次感 */
+            border: 1px solid #f3e5f5;
         }
 
-        .title-main {
-            font-size: 22px;
-            color: #4a148c; /* 深紫主标题 */
-            margin-bottom: 8px;
+        /* 标题区域统一设计，层级分明 */
+        .title-1 {
+            font-size: 24px; /* 主标题最大，突出核心 */
+            color: #6a1b9a; /* 主紫色，醒目但不刺眼 */
             font-weight: 700;
+            margin-bottom: 6px; /* 紧凑但不拥挤 */
         }
 
-        .title-tag {
-            font-size: 18px;
-            color: #7b1fa2; /* 浅紫副标题（收藏永不失联） */
-            margin-bottom: 20px;
+        .title-2 {
+            font-size: 18px; /* 副标题次之，作为补充 */
+            color: #8e24aa; /* 稍浅的紫色，和主标题呼应 */
             font-weight: 500;
-            letter-spacing: 1px; /* 字间距更舒服 */
+            margin-bottom: 18px; /* 拉开和说明文字的距离 */
+            letter-spacing: 0.5px; /* 轻微字间距，更易读 */
         }
 
-        .sub-title {
-            color: #9c27b0; /* 淡紫说明文字 */
-            font-size: 14px;
-            margin-bottom: 30px;
-            opacity: 0.8;
+        .title-3 {
+            font-size: 14px; /* 说明文字最小，作为点缀 */
+            color: #ab47bc; /* 更浅的紫色，不抢风头 */
+            font-weight: 400;
+            margin-bottom: 35px; /* 足够间距，区分按钮区域 */
+            opacity: 0.9; /* 轻微透明，降低视觉权重 */
         }
 
         .link-list {
@@ -64,21 +66,21 @@
         .link-item {
             display: block;
             padding: 16px;
-            background: #f8eaf9; /* 柔和淡紫色按钮 */
-            color: #6a1b9a; /* 适中的紫色文字 */
+            background: #f8eaf9;
+            color: #6a1b9a;
             text-decoration: none;
             border-radius: 10px;
             font-size: 16px;
             font-weight: 500;
             transition: all 0.3 ease;
-            border: 1px solid #e1bee7; /* 淡紫边框 */
+            border: 1px solid #e1bee7;
         }
 
         .link-item:hover {
-            background: #f3e5f5; /* hover 时稍深的淡紫 */
+            background: #f3e5f5;
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(156, 39, 176, 0.15);
-            border-color: #ce93d8; /* hover 时边框加深 */
+            border-color: #ce93d8;
         }
 
         .footer {
@@ -89,11 +91,10 @@
 </head>
 <body>
     <div class="card">
-        <!-- 主标题和收藏提示分开两行，排版更美观 -->
-        <h1 class="title-main">小姬资源发布页</h1>
-        <h2 class="title-tag">收藏永不失联</h2>
-        
-        <p class="sub-title">资源聚合·魔法分享·持续更新</p>
+        <!-- 标题层级清晰，排版规整 -->
+        <h1 class="title-1">小姬资源发布页</h1>
+        <h2 class="title-2">收藏永不失联</h2>
+        <p class="title-3">资源聚合·魔法分享·持续更新</p>
         
         <div class="link-list">
             <a href="https://link3.cc/jbksle" target="_blank" class="link-item">线路1</a>
