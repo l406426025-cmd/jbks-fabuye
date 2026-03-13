@@ -136,6 +136,37 @@
             }
         }
 
+        /* 新增大屏适配（电脑/平板） */
+        @media (min-width: 768px) {
+            body {
+                padding: 40px;
+            }
+            .card {
+                max-width: 800px;          /* 电脑上变宽 */
+                padding: 60px 50px;        /* 内边距更大 */
+            }
+            .link-list {
+                flex-direction: row;       /* 按钮横排 */
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+            }
+            .link-item {
+                flex: 1 1 200px;           /* 每个按钮宽度自适应 */
+                max-width: 220px;
+                min-width: 180px;
+            }
+            .main-title {
+                font-size: 32px;
+            }
+            .sub-title {
+                font-size: 20px;
+            }
+            .desc-text {
+                font-size: 15px;
+            }
+        }
+
         /* 新增弹窗样式 */
         .modal {
             position: fixed;
