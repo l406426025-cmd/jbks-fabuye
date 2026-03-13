@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>小姬资源发布页</title>
     <style>
-        /* 全局重置与基础样式 */
+        /* 原有所有样式保持完全不变 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
         }
-
         body {
             background: linear-gradient(120deg, #f9f4fc 0%, #ffffff 100%);
             min-height: 100vh;
@@ -21,8 +20,6 @@
             align-items: center;
             padding: 20px;
         }
-
-        /* 主卡片容器 - 核心视觉区 */
         .card {
             background: #ffffff;
             width: 100%;
@@ -33,8 +30,6 @@
             position: relative;
             overflow: hidden;
         }
-
-        /* 顶部装饰条 - 增加精致感 */
         .card::before {
             content: "";
             position: absolute;
@@ -44,14 +39,10 @@
             height: 4px;
             background: linear-gradient(90deg, #9c27b0, #ba68c8);
         }
-
-        /* 头像+标题区域 - 居中对称设计 */
         .header {
             text-align: center;
             margin-bottom: 35px;
         }
-
-        /* 圆形头像 - 更精致的样式 */
         .avatar {
             width: 80px;
             height: 80px;
@@ -61,8 +52,6 @@
             box-shadow: 0 4px 12px rgba(156, 39, 176, 0.1);
             object-fit: cover;
         }
-
-        /* 标题层级 - 更舒适的字号和间距 */
         .main-title {
             font-size: 26px;
             color: #333333;
@@ -70,29 +59,24 @@
             margin-bottom: 6px;
             letter-spacing: 0.5px;
         }
-
         .sub-title {
             font-size: 16px;
             color: #9c27b0;
             font-weight: 500;
             margin-bottom: 8px;
         }
-
         .desc-text {
             font-size: 13px;
             color: #999999;
             font-weight: 400;
             line-height: 1.5;
         }
-
-        /* 链接列表 - 更现代的按钮样式 */
         .link-list {
             display: flex;
             flex-direction: column;
             gap: 14px;
             margin-bottom: 35px;
         }
-
         .link-item {
             display: flex;
             align-items: center;
@@ -105,12 +89,10 @@
             font-size: 16px;
             font-weight: 500;
             border: 1px solid #e1bee7;
-            transition: all 0.3 cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
         }
-
-        /* 按钮hover动效 - 更高级的交互 */
         .link-item::after {
             content: "";
             position: absolute;
@@ -119,21 +101,17 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(156, 39, 176, 0.05), transparent);
-            transition: left 0.6 ease;
+            transition: left 0.6s ease;
         }
-
         .link-item:hover {
             background: #faf0fc;
             border-color: #ce93d8;
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(156, 39, 176, 0.1);
         }
-
         .link-item:hover::after {
             left: 100%;
         }
-
-        /* 页脚 - 更低调的样式 */
         .footer {
             text-align: center;
             font-size: 12px;
@@ -141,8 +119,6 @@
             padding-top: 15px;
             border-top: 1px solid #f8f0fa;
         }
-
-        /* 手机端适配 - 更贴心的调整 */
         @media (max-width: 450px) {
             .card {
                 padding: 35px 25px;
@@ -159,33 +135,145 @@
                 font-size: 15px;
             }
         }
+
+        /* 新增弹窗样式（与你其他页面风格统一） */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.75);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(6px);
+        }
+        .modal-content {
+            background: #ffffff;
+            border-radius: 16px;
+            max-width: 92%;
+            width: 620px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 28px 24px;
+            box-shadow: 0 10px 40px rgba(156,39,176,0.3);
+            border: 2px solid #e1bee7;
+            color: #4a4a68;
+        }
+        .modal-content h2 {
+            color: #d32f2f;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        .modal-content p {
+            line-height: 1.8;
+            margin-bottom: 14px;
+            font-size: 1.05rem;
+        }
+        .modal-content .strong {
+            font-weight: bold;
+            color: #d32f2f;
+        }
+        .modal-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+        .modal-btn {
+            padding: 14px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-width: 180px;
+        }
+        #agree {
+            background-color: #9c27b0;
+            color: white;
+        }
+        #agree:hover {
+            background-color: #7b1fa2;
+            transform: translateY(-2px);
+        }
+        #disagree {
+            background-color: #ef5350;
+            color: white;
+        }
+        #disagree:hover {
+            background-color: #d32f2f;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 600px) {
+            .modal-content { padding: 24px 18px; }
+            .modal-buttons { flex-direction: column; gap: 12px; }
+        }
     </style>
 </head>
 <body>
-    <div class="card">
-        <!-- 头部区域：已替换为你的头像链接 -->
-        <div class="header">
-            <img src="https://i2.qyimage.store:2999/i/bbae75fed77149fe" alt="小姬头像" class="avatar">
-            <h1 class="main-title">小姬资源发布页</h1>
-            <h2 class="sub-title">收藏永不失联</h2>
-            <p class="desc-text">资源聚合 · 魔法分享 · 持续更新</p>
-        </div>
 
-        <!-- 链接列表：新增TG粉丝群按钮，和线路按钮同列 -->
-        <div class="link-list">
-            <a href="https://link3.cc/jbksle" target="_blank" class="link-item">线路1</a>
-            <a href="https://proxy.edgeone.pp.ua/proxy?url=https%3A%2F%2Fl406426025-cmd.github.io%2F" target="_blank" class="link-item">线路2</a>
-            <a href="https://9lnk.io/jbksck" target="_blank" class="link-item">线路3</a>
-            <a href="https://vlink.cc/jbksle" target="_blank" class="link-item">线路4</a>
-            <a href="https://l406426025-cmd.github.io/" target="_blank" class="link-item">线路5</a>
-            <!-- TG粉丝群可点击按钮，跳转指定链接 -->
-            <a href="https://t.me/jbksjl" target="_blank" class="link-item">TG粉丝群 @jbksjl</a>
-        </div>
+    <!-- 免责弹窗 -->
+    <div class="modal" id="disclaimerModal">
+        <div class="modal-content">
+            <h2>重要免责声明（必须阅读）</h2>
+            <p>1. 本页面所有链接及跳转内容均来源于互联网公开信息整理，<strong>仅供个人学习、研究、技术交流、资料查阅之用，不构成任何服务提供、推荐或指导</strong>。</p>
+            
+            <p>2. 本人<strong>不运营、不维护、不销售、不代理</strong>任何代理工具、翻墙服务、破解软件或其他相关资源，<strong>未从中获取任何经济利益</strong>，也<strong>不参与任何形式的商业推广或盈利行为</strong>。</p>
+            
+            <p>3. 中华人民共和国法律法规明确禁止未经许可提供、传播、销售翻墙工具、国际联网代理服务等内容（详见《网络安全法》《计算机信息网络国际联网管理暂行规定》等）。本人<strong>强烈反对、坚决不鼓励、不支持</strong>任何违反中国法律法规的行为。</p>
+            
+            <p>4. 访问者必须自行判断所有链接的合法性、安全性、可用性及潜在风险，并<strong>严格遵守所在地全部法律法规</strong>。点击任何链接即视为您已知晓并自愿承担全部后果。</p>
+            
+            <p>5. 任何因访问、点击、使用、跳转本页面链接而产生的法律责任、行政处罚、经济损失、账号异常、设备安全问题或其他任何后果，<strong>全部由访问者本人自行承担，与本页面及维护者完全无关</strong>。</p>
+            
+            <p style="margin-top: 20px; text-align: center; font-weight: bold; color: #d32f2f; font-size: 1.15rem;">
+                点击“同意并继续”即表示您已完整阅读并理解以上全部内容，并承诺不会将本页面用于任何违法或不当目的。
+            </p>
 
-        <!-- 页脚 -->
-        <div class="footer">
-            公众号: 软姬工具箱 | 备用号: 姬不可失le
+            <div class="modal-buttons">
+                <button id="agree" class="modal-btn">同意并继续</button>
+                <button id="disagree" class="modal-btn">不同意，离开</button>
+            </div>
         </div>
     </div>
+
+    <!-- 原页面内容（先隐藏） -->
+    <div id="mainContent" style="display:none;">
+        <div class="card">
+            <div class="header">
+                <img src="https://i2.qyimage.store:2999/i/bbae75fed77149fe" alt="小姬头像" class="avatar">
+                <h1 class="main-title">小姬资源发布页</h1>
+                <h2 class="sub-title">收藏永不失联</h2>
+                <p class="desc-text">资源聚合 · 魔法分享 · 持续更新</p>
+            </div>
+            <div class="link-list">
+                <a href="https://link3.cc/jbksle" target="_blank" class="link-item">线路1</a>
+                <a href="https://proxy.edgeone.pp.ua/proxy?url=https%3A%2F%2Fl406426025-cmd.github.io%2F" target="_blank" class="link-item">线路2</a>
+                <a href="https://9lnk.io/jbksck" target="_blank" class="link-item">线路3</a>
+                <a href="https://vlink.cc/jbksle" target="_blank" class="link-item">线路4</a>
+                <a href="https://l406426025-cmd.github.io/" target="_blank" class="link-item">线路5</a>
+                <a href="https://t.me/jbksjl" target="_blank" class="link-item">TG粉丝群 @jbksjl</a>
+            </div>
+            <div class="footer">
+                公众号: 软姬工具箱 | 备用号: 姬不可失le
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 弹窗交互逻辑
+        document.getElementById('agree').addEventListener('click', function() {
+            document.getElementById('disclaimerModal').style.display = 'none';
+            document.getElementById('mainContent').style.display = 'block';
+        });
+
+        document.getElementById('disagree').addEventListener('click', function() {
+            document.body.innerHTML = '<div style="text-align:center; margin-top:200px; color:#d32f2f; font-size:2.5rem; font-weight:bold;">已取消访问<br><br>请关闭此页面</div>';
+        });
+    </script>
 </body>
 </html>
